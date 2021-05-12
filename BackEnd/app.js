@@ -10,6 +10,7 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 
+// create filestorage to save images to the directory
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'images');
@@ -57,8 +58,8 @@ app.use((error, req, res, next) => {
   const data = error.data;
   res.status(status).json({ message: message, data: data });
 });
-
-mongoose.connect('mongodb+srv://blaylock:passwordpassword1@cluster0.x59f4.mongodb.net/messages?retryWrites=true')
+// set up mongoDB
+mongoose.connect('Add your mondoDB info here')
   .then(result => {
     app.listen(8080);
   })
